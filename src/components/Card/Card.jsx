@@ -9,10 +9,13 @@ class Card extends React.Component {
 
   showBio() {
     const bio = document.querySelector('p');
+    const img = document.querySelector('img');
     if (bio.style.display === 'block') {
       bio.style.display = 'none';
+      img.style.transform = 'scale(1.0)';
     } else {
       bio.style.display = 'block';
+      img.style.transform = 'scale(1.5)';
     }
   }
   render() {
@@ -25,7 +28,7 @@ class Card extends React.Component {
         <div className='text'>
           <h1>Lucas Andrade</h1>
           <h2>5537293847</h2>
-          <span>@lucasdabanana</span>
+          <a target="blank" href="https://www.instagram.com/lucasdabandana">@lucasdabandana</a>
           <button onClick={this.showBio}>DETALHES</button>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
