@@ -4,8 +4,9 @@
 
 .landing {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin: 2.5% 0;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
@@ -40,6 +41,7 @@
     color: #fff;
     background-color: #7033AD;
     border-radius: 8px;
+    transition: 0.8s;
 }
 
 .landing form button:hover {
