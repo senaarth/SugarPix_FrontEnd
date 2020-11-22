@@ -36,6 +36,7 @@
 .cardComponent .text button {
     margin: 2.5% 0;
     background-color: rgb(111, 2, 158);
+    border: 0;
     border-radius: 8px;
     color: #f0f0f5;
     padding: 1.5%;
@@ -54,6 +55,7 @@
 
 .cardComponent .text p {
     display: none;
+    min-height: 80px;
 }
 
 @media (max-width: 800px) {

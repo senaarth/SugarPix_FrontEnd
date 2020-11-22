@@ -1,74 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+
+import Form from '../../components/Form/Form.jsx';
 import Card from '../../components/Card/Card.jsx';
 import api from '../../services/api';
-
 import './index.css';
 
-class Landing extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      instagram: '',
-      pix: '',
-    };
+function Landing() {
+  const [cards, setCards] = useState([]);
+
+  const [name] = useState('');
+  const [instagram] = useState('');
+  const [pix] = useState('');
+
+  function getData() {
+    setTimeout(() => {
+      api.get('list', {
+        params: {
+          name,
+          instagram,
+          pix,
+        },
+      }).then((res) => {
+        setCards(res.data.card);
+      });
+    }, 0);
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+  getData();
 
-    const data = this.state;
-
-    try {
-      api.post('/create', data);
-    } catch (err) {
-      console.log(err);
-    }
-
-    this.setState({
-      name: '',
-      instagram: '',
-      pix: '',
-    });
-  };
-
-  handleInputChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  render() {
-    return (
-      <div className='landing'>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name='name'
-            type='text'
-            placeholder='Nome'
-            value={this.state.name}
-            onChange={this.handleInputChange}
-          />
-          <input
-            name='instagram'
-            type='text'
-            placeholder='Instagram'
-            value={this.state.instagram}
-            onChange={this.handleInputChange}
-          />
-          <input
-            name='pix'
-            type='text'
-            placeholder='PIX'
-            value={this.state.pix}
-            onChange={this.handleInputChange}
-          />
-          <button type='submit'>Enviar</button>
-        </form>
-        <Card />
+  return (
+    <div className='landing'>
+      <Form />
+      <div className='feed'>
+        {cards.map((card) => {
+          return <Card key={card.id} card={card} />;
+        })}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Landing;
