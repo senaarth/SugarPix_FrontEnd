@@ -3,21 +3,21 @@
 }
 
 .cardComponent {
-    align-items: center;
     display: flex;
-    background-color: #f0f0f5;
-    border: 2px solid rgb(111, 2, 158);
+    align-items: center;
+    justify-content: space-evenly;
     border-radius: 8px;
     margin-top: 2.5%;
-    justify-content: space-evenly;
-    padding: 0 0.3%;
-    width: 60%;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: #f0f0f5;
 }
 
 .cardComponent img {
     border-radius: 50%;
-    width: 17%;
-    border: 4px solid rgb(111, 2, 158);
+    width: 15%;
+    border: 2px solid rgb(111, 2, 158);
+    transition: transform 0.5s;
 }
 
 .cardComponent .text {
@@ -28,9 +28,15 @@
     margin: 2.5% 0;
 }
 
+.cardComponent a {
+    text-decoration: none;
+    color: rgb(111, 2, 158);
+}
+
 .cardComponent .text button {
     margin: 2.5% 0;
     background-color: rgb(111, 2, 158);
+    border: 0;
     border-radius: 8px;
     color: #f0f0f5;
     padding: 1.5%;
@@ -43,7 +49,39 @@
     cursor: pointer;
 }
 
-.cardComponent .text p {
-    display: none;
+.cardComponent .text button:focus {
+    outline: none;
 }
 
+.cardComponent .text p {
+    display: none;
+    min-height: 80px;
+}
+
+@media (max-width: 800px) {
+    .cardComponent {
+        width: 90%;
+    }
+
+    .cardComponent .text h1 {
+        font-size: 15px;
+    }
+
+    .cardComponent .text h2,
+    .cardComponent .text a {
+        font-size: 12px;
+    }
+
+    .cardComponent .text p {
+        font-size: 10px;
+        text-align: justify;
+        margin-bottom: 2.5%;
+    }
+
+    .cardComponent .text button {
+        width: 40%;
+        font-size: 10px;
+    }
+
+
+}

@@ -19,6 +19,17 @@
     margin: auto;
 }
 
+.landing form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.landing form div input {
+    width: 45%;
+}
+
+
 .landing form input{
     background-color: #f0f0f5;
     border-radius: 8px;
@@ -36,12 +47,13 @@
 .landing form button {
     align-self: center;
     height: 40px;
-    width: 100%;
+    width: 70%;
     border: 0px;
-    color: #fff;
-    background-color: #7033AD;
+    color: #f0f0f5;
+    background-color: #34cb79;
     border-radius: 8px;
     transition: 0.8s;
+    font-size: medium;
 }
 
 .landing form button:hover {
@@ -53,3 +65,18 @@
     outline: none;
 }
 
+.landing .feed {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .landing form {
+        width: 70%;
+    }
+    .landing form div input {
+        width: 35%;
+    }
+}
