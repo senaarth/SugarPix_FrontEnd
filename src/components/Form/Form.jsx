@@ -21,23 +21,43 @@ class Form extends Component {
         const data = this.state;
 
         try {
-            await api.post('/create', data);
+            await api.post('/create', data)
+                .then( (res) => {
+                    const validation = res.data.message.split(' ');
+                    let empty = false;
+                    let length = false;
+
+                    for(let i = 0; i < validation.length; i++) {
+                        if (validation[i] === 'empty') {
+                            empty = true;
+                        } else if (validation[i] === 'length') {
+                            length = true;
+                        }
+                    }
+                    
+                    if (empty) {
+                        alert('Ops.. parece que você deixou algo importante sem preencher!');
+                    } else if (length) {
+                        alert('Algumas das suas informações estão curtas demais...');
+                    } else {
+                        this.setState({
+                            name: '',
+                            instagram: '',
+                            pix: '',
+                            bio: ''
+                        });
+                        alert(res.data.message);
+                    }
+                });
         } catch (err) {
             console.log(err);
         }
-
-        this.setState({
-            name: '',
-            instagram: '',
-            pix: '',
-            bio: ''
-        });
     };
 
     handleInputChange = (event) => {
-    this.setState({
-        [event.target.name]: event.target.value,
-    });
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
     };
 
 
