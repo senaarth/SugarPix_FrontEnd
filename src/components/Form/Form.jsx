@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import api from '../../services/api';
+import './Form.css'
 
 class Form extends Component {
 
@@ -65,13 +67,13 @@ class Form extends Component {
                     value={this.state.pix}
                     onChange={this.handleInputChange}
                 />
-                <input
+                <textarea
                     name='bio'
                     type='text'
                     placeholder='Bio'
                     value={this.state.bio}
                     onChange={this.handleInputChange}
-                    style={{height: "80px"}}
+                    className="bio"
                 />
                 <button type='submit'>Enviar</button>
             </form>
