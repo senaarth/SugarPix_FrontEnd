@@ -11,6 +11,9 @@ function Landing() {
   const [name] = useState('');
   const [instagram] = useState('');
   const [pix] = useState('');
+  const [initialIndex, setInitialIndex] = useState(0)
+  const [lastIndex, setLastIndex] = useState(5)
+  
 
   function getData() {
     setTimeout(() => {
@@ -21,9 +24,19 @@ function Landing() {
           pix,
         },
       }).then((res) => {
-        setCards(res.data.card);
+        setCards(spliceItems(res.data.card));
       });
     }, 0);
+  }
+
+  function spliceItems(items) {
+    console.log(items)
+    return items.slice(initialIndex, lastIndex)
+  }
+
+  function paginate() {
+    setInitialIndex(prevState => prevState + 5)
+    setLastIndex(prevState => prevState + 5)
   }
 
   getData();
@@ -36,6 +49,7 @@ function Landing() {
           return <Card key={card.id} card={card} />;
         })}
       </div>
+      <button onClick={() => paginate()}>Direita</button>
     </div>
   );
 }
