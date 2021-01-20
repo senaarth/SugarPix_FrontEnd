@@ -1,22 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Card.css';
 
 function Card({ key, card }) {
   const instaURL = 'https://www.instagram.com/' + card.instagram;
   const imgID = 'img' + card._id;
   const bioID = 'bio' + card._id;
-
-  // const [profilePic, setProfilePic] = useState('');
-  // async function picUrl() {
-  //   try {
-  //     const res = await fetch(instaURL + '/?__a=1');
-  //     const json = await res.json();
-  //     console.log('json', json)
-  //   } catch (err) {
-  //     console.error('err', err);
-  //   }
-  // }
-  // picUrl();
 
   function showBio() {
     const bio = document.getElementById(bioID);
@@ -34,7 +22,7 @@ function Card({ key, card }) {
   return (
     <div className='cardComponent'>
       <img
-        src={'https://scontent-gig2-1.cdninstagram.com/v/t51.2885-15/e35/106368633_154548092816106_2260210631900495517_n.jpg?_nc_ht=scontent-gig2-1.cdninstagram.com&_nc_cat=106&_nc_ohc=2wq7Ol40HDUAX_UPMZQ&tp=1&oh=ae9a357eee7cba9c50dc60fb40717922&oe=602ED120'}
+        src='https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?resize=300%2C300&ssl=1'
         alt=''
         id={imgID}
       />
