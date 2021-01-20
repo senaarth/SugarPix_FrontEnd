@@ -13,24 +13,7 @@
 
 .landing .feed {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-}
-
-.container {
-    display: flex;
-    justify-content: space-around;
-    width: 7%;
-    margin-top: 5%;
-}
-
-.container .prev::before {
-    content: '\02C2';
-
-}
-
-.container .next::before {
-    content: '\02C3';
-    
 }
