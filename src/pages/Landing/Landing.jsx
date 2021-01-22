@@ -16,27 +16,6 @@ function Landing() {
   const [lastIndex, setLastIndex] = useState(5)
   const [itemsPerPage] = useState(5);
   
-
-
-  function getData() {
-    setTimeout(() => {
-      api.get('list', {
-        params: {
-          name,
-          instagram,
-          pix,
-        },
-      }).then((res) => {
-        setCards(res.data.card);
-        setMaxPages(Math.ceil(res.data.card.length / 5))
-      });
-    }, 0);
-  }
-
-  function spliceItems(items) {
-    return items.slice(initialIndex, lastIndex)
-  }
-
   function previousValue() {
     setPageCount(prevState => prevState - 1)
     setInitialIndex(prevState => prevState - 5)
@@ -50,9 +29,28 @@ function Landing() {
   }
 
   useEffect(() => {
-    setSelectedCards(spliceItems(cards))
+    function getData() {
+      setTimeout(() => {
+        api.get('list', {
+          params: {
+            name,
+            instagram,
+            pix,
+          },
+        }).then((res) => {
+          setCards(res.data.card);
+          setMaxPages(Math.ceil(res.data.card.length / 5))
+          setSelectedCards(spliceItems(cards))
+        });
+      }, 0);
+    }
+  
+    function spliceItems(items) {
+      return items.slice(initialIndex, lastIndex)
+    }
+
     getData();
-  })
+  }, [cards, initialIndex, instagram, lastIndex, name, pix])
 
   return (
     <div className='landing'>
