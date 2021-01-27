@@ -84,14 +84,14 @@ class Form extends Component {
                     } else if (length) {
                         alert('Algumas das suas informações estão curtas demais...');
                     } else {
-                        this.setState = {
+                        this.setState({
                             name: '',
-                            instagram: '',
                             pix: '',
+                            instagram: '',
                             bio: '',
                             selectedFile: null,
                             url: ''
-                        };
+                        });
                         alert('Pix registrado com sucesso!');
                     }
                 });
@@ -111,7 +111,7 @@ class Form extends Component {
         });
     };
 
-    handleInputFileChange = async  (e) => {
+    handleInputFileChange = async (e) => {
         this.setState({
             selectedFile: e.target.files[0]
         });

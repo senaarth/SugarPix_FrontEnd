@@ -11,12 +11,13 @@
     width: 50%;
     box-sizing: border-box;
     background-color: #f0f0f5;
+    padding: 2.5%;
 }
 
 .cardComponent img {
     border-radius: 50%;
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 10rem;
+    height: 10rem;
     border: 2px solid rgb(111, 2, 158);
     transition: transform 0.5s;
 }
@@ -60,9 +61,13 @@
     min-height: 80px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .cardComponent {
         width: 90%;
+    }
+    .cardComponent img {
+        width: 17vw;
+        height: 17vw;
     }
     .cardComponent .text h1 {
         font-size: 15px;

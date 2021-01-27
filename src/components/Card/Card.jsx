@@ -16,7 +16,7 @@ function Card({ key, card }) {
       img.style.transform = 'scale(1.0)';
     } else {
       bio.style.display = 'block';
-      img.style.transform = 'scale(1.35)';
+      img.style.transform = 'scale(1.25)';
     }
   }
 
