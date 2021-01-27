@@ -15,7 +15,8 @@
 
 .cardComponent img {
     border-radius: 50%;
-    width: 15%;
+    width: 7.5rem;
+    height: 7.5rem;
     border: 2px solid rgb(111, 2, 158);
     transition: transform 0.5s;
 }
@@ -63,25 +64,20 @@
     .cardComponent {
         width: 90%;
     }
-
     .cardComponent .text h1 {
         font-size: 15px;
     }
-
     .cardComponent .text h2,
     .cardComponent .text a {
         font-size: 12px;
     }
-
     .cardComponent .text p {
         font-size: 10px;
         text-align: justify;
         margin-bottom: 2.5%;
     }
-
     .cardComponent .text button {
         width: 40%;
         font-size: 10px;
     }
-
 }
