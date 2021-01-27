@@ -5,6 +5,7 @@ function Card({ key, card }) {
   const instaURL = 'https://www.instagram.com/' + card.instagram;
   const imgID = 'img' + card._id;
   const bioID = 'bio' + card._id;
+  const url = card.url;
 
   function showBio() {
     const bio = document.getElementById(bioID);
@@ -22,7 +23,7 @@ function Card({ key, card }) {
   return (
     <div className='cardComponent'>
       <img
-        src='https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?resize=300%2C300&ssl=1'
+        src={url}
         alt=''
         id={imgID}
       />

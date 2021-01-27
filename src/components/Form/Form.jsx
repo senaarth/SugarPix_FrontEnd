@@ -11,18 +11,62 @@ class Form extends Component {
           name: '',
           instagram: '',
           pix: '',
-          bio: ''
+          bio: '',
+          selectedFile: null,
+          url: ''
         };
     }
-    
-    handleSubmit = async (event) => {
-        event.preventDefault();
 
-        const data = this.state;
+    handleFileUpload = async () => {
+        const data = new FormData();
+        if ( this.state.selectedFile ) {
+            data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name ); 
+            api.post( '/profile-img-upload', data, {
+                headers: {
+                    'accept': 'application/json',
+                    'Accept-Language': 'en-US,en;q=0.8',
+                    'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                }
+            })
+            .then( async (response) => {
+                if ( 200 === response.status ) {
+                    if( response.data.error ) {
+                        if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+                            alert( 'Tamanho máximo de 2MB excedido.');
+                        } else {
+                            console.log( response.data );
+                            alert( response.data.error);
+                        }
+                    } else {
+                        let fileName = response.data;
+                        this.setState({
+                            url: fileName.location
+                        });
+                        await this.handleCardUpload();
+                    }
+                }
+            })
+            .catch( err => {
+                alert(err);
+            });
+        } else {
+            alert('Favor enviar uma foto de perfil.');
+        }
+    };
+
+    handleCardUpload = async () => {
+        const data = {
+            name: this.state.name,
+            instagram: this.state.instagram,
+            pix: this.state.pix,
+            bio: this.state.bio,
+            url: this.state.url
+        };
 
         try {
             await api.post('/create', data)
                 .then( (res) => {
+                    console.log(res.data.message)
                     const validation = res.data.message.split(' ');
                     let empty = false;
                     let length = false;
@@ -40,18 +84,25 @@ class Form extends Component {
                     } else if (length) {
                         alert('Algumas das suas informações estão curtas demais...');
                     } else {
-                        this.setState({
+                        this.setState = {
                             name: '',
                             instagram: '',
                             pix: '',
-                            bio: ''
-                        });
-                        alert(res.data.message);
+                            bio: '',
+                            selectedFile: null,
+                            url: ''
+                        };
+                        alert('Pix registrado com sucesso!');
                     }
                 });
         } catch (err) {
             console.log(err);
         }
+    }
+    
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        await this.handleFileUpload();
     };
 
     handleInputChange = (event) => {
@@ -59,6 +110,12 @@ class Form extends Component {
             [event.target.name]: event.target.value,
         });
     };
+
+    handleInputFileChange = async  (e) => {
+        this.setState({
+            selectedFile: e.target.files[0]
+        });
+    }
 
 
     render() {
@@ -86,6 +143,11 @@ class Form extends Component {
                     placeholder='PIX'
                     value={this.state.pix}
                     onChange={this.handleInputChange}
+                />
+                <input
+                    name='profile_pic'
+                    type='file'
+                    onChange={this.handleInputFileChange}
                 />
                 <textarea
                     name='bio'

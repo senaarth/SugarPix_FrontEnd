@@ -11,6 +11,7 @@ function Landing() {
   const [name] = useState('');
   const [instagram] = useState('');
   const [pix] = useState('');
+  const [url] = useState('');
   const [initialIndex, setInitialIndex] = useState(0)
   const [lastIndex, setLastIndex] = useState(5)
   
@@ -22,6 +23,7 @@ function Landing() {
           name,
           instagram,
           pix,
+          url
         },
       }).then((res) => {
         setCards(spliceItems(res.data.card));
@@ -30,7 +32,7 @@ function Landing() {
   }
 
   function spliceItems(items) {
-    console.log(items)
+    // console.log(items)
     return items.slice(initialIndex, lastIndex)
   }
 
