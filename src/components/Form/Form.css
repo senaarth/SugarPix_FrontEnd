@@ -67,3 +67,27 @@ form textarea:focus  {
         width: 90%;
     }
 }
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #923ea3;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+label::before {
+    content: url('./upload-solid.svg');
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: auto 8px;
+}

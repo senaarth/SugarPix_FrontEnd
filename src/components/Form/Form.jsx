@@ -144,11 +144,6 @@ class Form extends Component {
                     value={this.state.pix}
                     onChange={this.handleInputChange}
                 />
-                <input
-                    name='profile_pic'
-                    type='file'
-                    onChange={this.handleInputFileChange}
-                />
                 <textarea
                     name='bio'
                     type='text'
@@ -156,6 +151,14 @@ class Form extends Component {
                     value={this.state.bio}
                     onChange={this.handleInputChange}
                     className="bio"
+                />
+
+                <label htmlFor="profile_pic">Escolha uma foto</label>
+                <input
+                    name='profile_pic'
+                    type='file'
+                    onChange={this.handleInputFileChange}
+                    id='profile_pic'
                 />
                 <button type='submit'>Enviar</button>
             </form>

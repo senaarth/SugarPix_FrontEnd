@@ -1,8 +1,12 @@
+import Logo from './components/Logo/Logo.jsx';
 import Landing from './pages/Landing/Landing.jsx';
 
 function App() {
   return (
-    <Landing />
+    <div>
+      <Logo />
+      <Landing />
+    </div>
   );
 }
 
