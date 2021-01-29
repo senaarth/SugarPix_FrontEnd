@@ -71,7 +71,7 @@
     .cardComponent {
         width: 90%;
     }
-    .cardComponent img {
+    .cardComponent .imgDiv {
         width: 17vw;
         height: 17vw;
     }
