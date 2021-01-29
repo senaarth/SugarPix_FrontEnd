@@ -22,11 +22,13 @@ function Card({ key, card }) {
 
   return (
     <div className='cardComponent'>
-      <img
-        src={url}
-        alt=''
-        id={imgID}
-      />
+      <div className="imgDiv">
+        <img
+          src={url}
+          alt=''
+          id={imgID}
+        />
+      </div>
       <div className='text'>
         <h1>{card.name}</h1>
         <h2>{card.pix}</h2>

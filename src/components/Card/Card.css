@@ -14,10 +14,16 @@
     padding: 2.5%;
 }
 
-.cardComponent img {
-    border-radius: 50%;
+.cardComponent .imgDiv {
     width: 10rem;
     height: 10rem;
+}
+
+.cardComponent .imgDiv img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
     border: 2px solid rgb(111, 2, 158);
     transition: transform 0.5s;
 }

@@ -34,7 +34,7 @@ function Landing() {
           },
         }).then((res) => {
           console.log(res.data)
-          setCards((res.data.card));
+          setCards((res.data.card).reverse());
           setLoaded(true)
         });
       }, 0);
@@ -56,7 +56,6 @@ function Landing() {
           return <Card key={card.id} card={card} />;
         }) : <ReactLoading className='loading' type='spin' />}
       </div>
-      {/* <button onClick={() => paginate()}>Direita</button> */}
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={cards.length}
