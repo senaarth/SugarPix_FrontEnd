@@ -1,57 +1,67 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 import Form from '../../components/Form/Form.jsx';
 import Card from '../../components/Card/Card.jsx';
 import api from '../../services/api';
 import './Landing.css';
+import Pagination from '../../components/Pagination/Pagination.jsx';
 
 function Landing() {
   const [cards, setCards] = useState([]);
-
   const [name] = useState('');
   const [instagram] = useState('');
   const [pix] = useState('');
   const [url] = useState('');
-  const [initialIndex, setInitialIndex] = useState(0)
-  const [lastIndex, setLastIndex] = useState(5)
+  const [loaded, setLoaded] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
   
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = cards.slice(indexOfFirstPost, indexOfLastPost);
 
-  function getData() {
-    setTimeout(() => {
-      api.get('list', {
-        params: {
-          name,
-          instagram,
-          pix,
-          url
-        },
-      }).then((res) => {
-        setCards(spliceItems(res.data.card));
-      });
-    }, 0);
-  }
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  function spliceItems(items) {
-    // console.log(items)
-    return items.slice(initialIndex, lastIndex)
-  }
+  useEffect(() => {
+    function getData() {
+      setTimeout(() => {
+        api.get('list', {
+          params: {
+            name,
+            instagram,
+            pix,
+            url
+          },
+        }).then((res) => {
+          console.log(res.data)
+          setCards((res.data.card));
+          setLoaded(true)
+        });
+      }, 0);
+    }
+    getData();
+  })
 
-  function paginate() {
-    setInitialIndex(prevState => prevState + 5)
-    setLastIndex(prevState => prevState + 5)
-  }
+  // function paginate() {
+  //   setInitialIndex(prevState => prevState + 5)
+  //   setLastIndex(prevState => prevState + 5)
+  // }
 
-  getData();
 
   return (
     <div className='landing'>
       <Form />
       <div className='feed'>
-        {cards.map((card) => {
+        {loaded ? currentPosts.map((card) => {
           return <Card key={card.id} card={card} />;
-        })}
+        }) : <ReactLoading className='loading' type='spin' />}
       </div>
       {/* <button onClick={() => paginate()}>Direita</button> */}
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={cards.length}
+        paginate={paginate}
+      />
     </div>
   );
 }

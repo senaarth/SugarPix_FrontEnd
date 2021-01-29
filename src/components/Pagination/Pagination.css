@@ -1,0 +1,26 @@
+.pagination {
+    display: inline-block;
+    margin: 80% 0 0 0;
+    padding: 0;
+}
+
+.page-item {
+    border: 1px solid #ddd;
+    display: inline;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    list-style: none;
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.pagination .page-item:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination .page-item:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
