@@ -8,10 +8,10 @@
     justify-content: space-evenly;
     border-radius: 8px;
     margin-top: 2.5%;
-    width: 50%;
+    width: 60%;
     box-sizing: border-box;
     background-color: #f0f0f5;
-    padding: 2.5%;
+    padding: 1.5%;
 }
 
 .cardComponent .imgDiv {
@@ -67,9 +67,10 @@
     min-height: 80px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
     .cardComponent {
         width: 90%;
+        padding: 2.5%;
     }
     .cardComponent .imgDiv {
         width: 17vw;

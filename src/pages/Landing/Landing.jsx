@@ -5,6 +5,7 @@ import Card from '../../components/Card/Card.jsx';
 import api from '../../services/api';
 import './Landing.css';
 import Pagination from '../../components/Pagination/Pagination.jsx';
+import shuffle from './shuffle.png';
 
 function Landing() {
   const [cards, setCards] = useState([]);
@@ -57,10 +58,21 @@ function Landing() {
 
   return (
     <div className='landing'>
-      <Form getData={getData}/>
-      <hr class="rounded" />
+      {/* <Form getData={getData}/>
+      <hr class="rounded" /> */}
       <div className="shuffle">
-        <button onClick={() => getData(true)}>Embaralhar Cards</button>
+        <button onClick={() => {
+          getData(true);
+          setCurrentPage(1);
+        }}>
+          <img 
+            src={shuffle} 
+            alt=""
+            width="30"
+            height="30"
+          />
+          Embaralhar Cards
+        </button>
       </div>
       <div className='feed'>
         {loaded ? currentPosts.map((card) => {
