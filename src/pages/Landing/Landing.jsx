@@ -22,35 +22,46 @@ function Landing() {
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
+  function getData(random) {
+    setLoaded(false);
+    setTimeout(() => {
+      api.get('cards/list', {
+        params: {
+          name,
+          instagram,
+          pix,
+          url
+        },
+      }).then((res) => {
+        let data = []
+        if (!random) {
+          data = res.data.card.reverse();
+        } else {
+          data = res.data.card.sort(() => Math.random() - 0.5);
+        }
+
+        setCards(data);
+        setLoaded(true);
+      });
+    }, 0);
+  }
+
   useEffect(() => {
-    function getData() {
-      setTimeout(() => {
-        api.get('list', {
-          params: {
-            name,
-            instagram,
-            pix,
-            url
-          },
-        }).then((res) => {
-          console.log(res.data)
-          setCards((res.data.card).reverse());
-          setLoaded(true)
-        });
-      }, 0);
-    }
-    getData();
-  })
+    getData(false);
+  }, []);
 
   // function paginate() {
   //   setInitialIndex(prevState => prevState + 5)
   //   setLastIndex(prevState => prevState + 5)
   // }
 
-
   return (
     <div className='landing'>
-      <Form />
+      <Form getData={getData}/>
+      <hr class="rounded" />
+      <div className="shuffle">
+        <button onClick={() => getData(true)}>Embaralhar Cards</button>
+      </div>
       <div className='feed'>
         {loaded ? currentPosts.map((card) => {
           return <Card key={card.id} card={card} />;

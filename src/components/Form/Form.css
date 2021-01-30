@@ -49,6 +49,7 @@ form button {
     border-radius: 8px;
     transition: 0.8s;
     font-size: medium;
+    margin-bottom: 2.5%;
 }
 
 form button:hover {

@@ -11,6 +11,42 @@
     height: 100%;
 }
 
+.landing hr.rounded {
+    width: 25%;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.landing .shuffle {
+    display: flex;
+    justify-content: center;
+    width: 35%;
+}
+
+.landing .shuffle button {
+    margin-top: 2.5%;
+    align-self: center;
+    width: 100%;
+    height: 40px;
+    padding: 0 10%;
+    border: 0px;
+    color: #f0f0f5;
+    background-color: #34cb79;
+    border-radius: 8px;
+    transition: 0.8s;
+    font-size: 17px;
+}
+
+.landing .shuffle button:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.landing .shuffle button:focus {
+    outline: none;
+    opacity: 1;
+}
+
 .landing .feed {
     display: flex;
     flex-direction: column;
@@ -20,4 +56,10 @@
 
 .loading {
     margin-top: 10%;
+}
+
+@media( max-width: 800px ) {
+    .landing .shuffle {
+        width: 62.5%;
+    }
 }

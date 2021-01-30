@@ -21,7 +21,7 @@ class Form extends Component {
         const data = new FormData();
         if ( this.state.selectedFile ) {
             data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name ); 
-            api.post( '/profile-img-upload', data, {
+            api.post( 'cards/profile-img-upload', data, {
                 headers: {
                     'accept': 'application/json',
                     'Accept-Language': 'en-US,en;q=0.8',
@@ -64,20 +64,24 @@ class Form extends Component {
         };
 
         try {
-            await api.post('/create', data)
+            await api.post('cards/create', data)
                 .then( (res) => {
                     console.log(res.data.message)
-                    const validation = res.data.message.split(' ');
+                    let validation = res.data.message;
                     let empty = false;
                     let length = false;
-
-                    for(let i = 0; i < validation.length; i++) {
-                        if (validation[i] === 'empty') {
-                            empty = true;
-                        } else if (validation[i] === 'length') {
-                            length = true;
+                    
+                    if (validation) {
+                        validation = res.data.message.split(' ');
+    
+                        for(let i = 0; i < validation.length; i++) {
+                            if (validation[i] === 'empty') {
+                                empty = true;
+                            } else if (validation[i] === 'length') {
+                                length = true;
+                            }
                         }
-                    }
+                    } 
                     
                     if (empty) {
                         alert('Ops.. parece que você deixou algo importante sem preencher!');
@@ -93,6 +97,7 @@ class Form extends Component {
                             url: ''
                         });
                         alert('Pix registrado com sucesso!');
+                        this.props.getData(false);
                     }
                 });
         } catch (err) {
