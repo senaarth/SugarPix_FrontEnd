@@ -24,3 +24,11 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+  
+.page-item a:hover:not(.active) {background-color: #ddd;}
+
+.actual-page {
+    background-color: #7033AD;
+    color: white;
+}

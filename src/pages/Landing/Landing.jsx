@@ -71,6 +71,7 @@ function Landing() {
         postsPerPage={postsPerPage}
         totalPosts={cards.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </div>
   );
