@@ -13,7 +13,8 @@ class Form extends Component {
           pix: '',
           bio: '',
           selectedFile: null,
-          url: ''
+          url: '',
+          messageFile: 'Envie uma foto'
         };
     }
 
@@ -118,7 +119,8 @@ class Form extends Component {
 
     handleInputFileChange = async (e) => {
         this.setState({
-            selectedFile: e.target.files[0]
+            selectedFile: e.target.files[0],
+            messageFile: 'Foto Enviada!'
         });
     }
 
@@ -157,7 +159,7 @@ class Form extends Component {
                     onChange={this.handleInputChange}
                     className="bio"
                 />
-                <label htmlFor="profile_pic">Escolha uma foto</label>
+                <label htmlFor="profile_pic">{this.state.messageFile}</label>
                 <input
                     name='profile_pic'
                     type='file'
