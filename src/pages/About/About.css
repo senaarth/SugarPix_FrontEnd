@@ -1,0 +1,49 @@
+.about {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about .title {    
+    color: white; 
+    font-size: 2rem;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.about .textAbout {
+    color: white; 
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.about .textSpecial {
+    color: #34cb79;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.about .decoration {
+    margin-top: 10%;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+    height: 17.5%;
+    margin-bottom: -17.5%;
+    margin-right: -81.5%;
+}
+
+@media (min-width: 700px) {
+    .about {
+        width: 75%;
+    }
+    .about .textAbout {
+        font-size: 1.3rem;
+    }
+    .about .decoration {
+        margin-right: -103%;
+    }
+}
