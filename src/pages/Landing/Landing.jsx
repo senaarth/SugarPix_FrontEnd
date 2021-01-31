@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
-import Form from '../../components/Form/Form.jsx';
 import Card from '../../components/Card/Card.jsx';
 import api from '../../services/api';
 import './Landing.css';
@@ -48,8 +47,8 @@ function Landing() {
   }
 
   useEffect(() => {
-    getData(false);
-  }, []);
+      getData(false);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // function paginate() {
   //   setInitialIndex(prevState => prevState + 5)
@@ -58,8 +57,6 @@ function Landing() {
 
   return (
     <div className='landing'>
-      {/* <Form getData={getData}/>
-      <hr class="rounded" /> */}
       <div className="shuffle">
         <button onClick={() => {
           getData(true);
@@ -75,8 +72,8 @@ function Landing() {
         </button>
       </div>
       <div className='feed'>
-        {loaded ? currentPosts.map((card) => {
-          return <Card key={card.id} card={card} />;
+        {loaded ? currentPosts.map((card, index) => {
+          return <Card card={card} key={card._id}/>;
         }) : <ReactLoading className='loading' type='spin' />}
       </div>
       <Pagination

@@ -67,7 +67,8 @@ class Form extends Component {
         try {
             await api.post('cards/create', data)
                 .then( (res) => {
-                    console.log(res.data.message)
+                    console.log(res.data.message);
+
                     let validation = res.data.message;
                     let empty = false;
                     let length = false;
@@ -98,11 +99,22 @@ class Form extends Component {
                             url: ''
                         });
                         alert('Pix registrado com sucesso!');
-                        this.props.getData(false);
                     }
                 });
         } catch (err) {
-            console.log(err);
+
+            let message = err.message;
+
+            if (message) {
+                message = message.split(' ');
+                for(let i = 0; i < message.length; i++) {
+                    if (message[i] === '429') {
+                        alert('Você já se cadastrou recentemente!');
+                    } 
+                }
+            } 
+
+            console.log(err.message);
         }
     }
     
@@ -166,7 +178,7 @@ class Form extends Component {
                     onChange={this.handleInputFileChange}
                     id='profile_pic'
                 />
-                <button type='submit'>Enviar</button>
+                <button type='submit'>Cadastrar</button>
             </form>
         );
     }
