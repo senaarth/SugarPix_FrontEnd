@@ -1,6 +1,7 @@
 import React from 'react';
 import './Signup.css';
 import decoration from '../About/decoration.png';
+import womanlogo from './womanlogo.jpeg';
 import Form from '../../components/Form/Form.jsx';
 
 function Signup() {
@@ -9,9 +10,9 @@ function Signup() {
         <h1 className="title">Crie o seu BabyPix</h1>
         <Form />
         <img 
-            src={decoration}
+            src={womanlogo}
             alt=""
-            className="decoration"
+            className="womanlogo"
         />
     </div>
   );

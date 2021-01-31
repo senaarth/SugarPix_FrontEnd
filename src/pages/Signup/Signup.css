@@ -20,6 +20,12 @@
     display: none;
 }
 
+.signup .womanlogo {
+    width: 15%;
+    height: 12.5%;
+    margin-top: 2%;
+}
+
 @media(max-width: 700px) {
     .signup .title {
         margin: 5% 0 7.5% 0;
@@ -27,4 +33,9 @@
     /* .signup .decoration {
         display: inline;
     } */
+    .signup .womanlogo {
+        width: 30%;
+        height: 25%;
+        margin-top: 23%;
+    }
 }
