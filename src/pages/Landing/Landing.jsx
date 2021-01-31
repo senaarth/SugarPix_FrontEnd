@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
-import Form from '../../components/Form/Form.jsx';
 import Card from '../../components/Card/Card.jsx';
 import api from '../../services/api';
 import './Landing.css';
@@ -48,7 +47,7 @@ function Landing() {
   }
 
   useEffect(() => {
-    getData(false);
+      getData(false);
   }, []);
 
   // function paginate() {
@@ -58,8 +57,6 @@ function Landing() {
 
   return (
     <div className='landing'>
-      {/* <Form getData={getData}/>
-      <hr class="rounded" /> */}
       <div className="shuffle">
         <button onClick={() => {
           getData(true);
