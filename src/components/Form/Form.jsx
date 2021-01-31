@@ -166,7 +166,7 @@ class Form extends Component {
                     onChange={this.handleInputFileChange}
                     id='profile_pic'
                 />
-                <button type='submit'>Enviar</button>
+                <button type='submit'>Cadastrar</button>
             </form>
         );
     }

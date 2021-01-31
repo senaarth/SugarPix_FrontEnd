@@ -11,7 +11,7 @@ function Nav_() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto navLinks">
-                    <Nav.Link href="#" className="mr-3">Cadastrar Meu Pix</Nav.Link>
+                    <Nav.Link href="/signup" className="mr-3">Cadastrar Meu Pix</Nav.Link>
                     <Nav.Link eventKey={2} href="/about">
                         Sobre
                     </Nav.Link>

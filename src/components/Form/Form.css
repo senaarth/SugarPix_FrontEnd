@@ -42,7 +42,8 @@ form .bio {
 form button {
     align-self: center;
     height: 40px;
-    width: 70%;
+    width: 30%;
+    margin-top: 15%;
     border: 0px;
     color: #f0f0f5;
     background-color: #34cb79;
@@ -66,6 +67,9 @@ form textarea:focus  {
 @media (max-width: 800px) {
     form {
         width: 90%;
+    }
+    form button {
+        width: 50%;
     }
 }
 
