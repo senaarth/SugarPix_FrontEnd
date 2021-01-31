@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-function Card({ key, card }) {
+function Card({ card }) {
   const instaURL = 'https://www.instagram.com/' + card.instagram;
   const imgID = 'img' + card._id;
   const bioID = 'bio' + card._id;

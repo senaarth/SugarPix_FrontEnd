@@ -48,7 +48,7 @@ function Landing() {
 
   useEffect(() => {
       getData(false);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // function paginate() {
   //   setInitialIndex(prevState => prevState + 5)
@@ -72,8 +72,8 @@ function Landing() {
         </button>
       </div>
       <div className='feed'>
-        {loaded ? currentPosts.map((card) => {
-          return <Card key={card.id} card={card} />;
+        {loaded ? currentPosts.map((card, index) => {
+          return <Card card={card} key={card._id}/>;
         }) : <ReactLoading className='loading' type='spin' />}
       </div>
       <Pagination
