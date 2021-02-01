@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Modal } from "react-bootstrap";
-import './ModalError.css'
+import { Modal, Button } from "react-bootstrap";
+import error from './error-circle-solid.svg'
 
 const ModalError = (props) => {
 
@@ -19,18 +19,16 @@ const ModalError = (props) => {
         <Modal
         show={show}
         dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
+        aria-labelledby="contained-modal-title-vcenter"
         onHide={props.onHide}
+        className="text-center h-50"
       >
-        <Modal.Header closeButton className='header-modal'>
-          <Modal.Title id="example-custom-modal-styling-title">
-            Titulo
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>
+        <Modal.Body id="contained-modal-title-vcenter" closebutton>
+        
+        <img src={error} width="60px" className="mb-4" />
+          <h4 className="h4 mb-4">
             {props.messageErr}
-          </p>
+          </h4>
         </Modal.Body>
       </Modal>
     )
