@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from "react-bootstrap";
-import './ModalError.css'
 
 const ModalSuccess = (props) => {
 
