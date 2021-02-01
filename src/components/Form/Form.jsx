@@ -148,7 +148,7 @@ class Form extends Component {
         return(
             <>
             <ModalError onHide={() => this.setState({ err: false })} show={this.state.err} messageErr={this.state.messageErr} />
-            <ModalSuccess onHide={() => this.setState({ success: true })} show={this.state.success} messageSuccess={this.state.messageSuccess} />
+            <ModalSuccess onHide={() => this.setState({ success: false })} show={this.state.success} messageSuccess={this.state.messageSuccess} />
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <input
