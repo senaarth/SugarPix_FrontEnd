@@ -16,21 +16,25 @@ const ModalError = (props) => {
     })
 
     return (
-        <Modal
+      <div className="row h-100">
+      <Modal
         show={show}
         dialogClassName="modal-90w"
         aria-labelledby="contained-modal-title-vcenter"
+        centered
         onHide={props.onHide}
-        className="text-center h-50"
+        className="text-center rounded-lg col-sm-12 my-auto"
       >
-        <Modal.Body id="contained-modal-title-vcenter" closebutton>
-        
+        <Modal.Body id="contained-modal-title-vcenter" closebutton centered>
         <img src={error} width="60px" className="mb-4" />
-          <h4 className="h4 mb-4">
+          <h5 className="h5 mb-4">
             {props.messageErr}
-          </h4>
+          </h5>
+
+          <Button variant="danger" onClick={props.onHide}>Ok</Button>
         </Modal.Body>
       </Modal>
+      </div>
     )
 }
 

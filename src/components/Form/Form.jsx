@@ -41,7 +41,6 @@ class Form extends Component {
                         if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
                             this.setState({ err: true, messageErr: 'Tamanho máximo de 2MB excedido'})
                         } else {
-                            console.log( response.data );
                             alert( response.data.error);
                         }
                     } else {
@@ -73,7 +72,6 @@ class Form extends Component {
         try {
             await api.post('cards/create', data)
                 .then( (res) => {
-                    console.log(res.data.message);
 
                     let validation = res.data.message;
                     let empty = false;
@@ -120,7 +118,6 @@ class Form extends Component {
                 }
             } 
 
-            console.log(err.message);
         }
     }
     
@@ -141,8 +138,6 @@ class Form extends Component {
             messageFile: 'Foto Enviada!'
         });
     }
-
-
 
     render() {
         return(
