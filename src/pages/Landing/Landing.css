@@ -1,0 +1,77 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5% 0;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.landing hr.rounded {
+    width: 25%;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.landing .shuffle {
+    display: flex;
+    justify-content: flex-end;
+    width: 51.5%;
+}
+
+.landing .shuffle button {
+    /* margin-top: 2.5%;
+    margin-bottom: 10%; */
+    align-self: flex-end;
+    width: 100%;
+    height: 40px;
+    border: 0px;
+    color: #f0f0f5;
+    background-color: transparent;
+    border-radius: 8px;
+    transition: 0.8s;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.landing .shuffle button:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.landing .shuffle button:focus {
+    outline: none;
+    opacity: 1;
+}
+
+.landing .shuffle button img {
+    margin-right: 15px; 
+}
+
+.landing .feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.loading {
+    margin-top: 10%;
+}
+
+@media( max-width: 1250px ) {
+    .landing .shuffle {
+        width: 92.5%;
+    }
+    .landing .shuffle button {
+        font-size: 12px;
+    }
+    .landing .shuffle button img {
+        margin-right: 7px; 
+    }
+}

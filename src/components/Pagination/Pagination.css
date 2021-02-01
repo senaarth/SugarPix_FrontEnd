@@ -1,0 +1,34 @@
+.pagination {
+    display: inline-block;
+    margin: 20% 0 20% 0;
+    padding: 0;
+}
+
+.page-item {
+    border: 1px solid #ddd;
+    display: inline;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    list-style: none;
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.pagination .page-item:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination .page-item:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+  
+.page-item a:hover:not(.active) {background-color: #ddd;}
+
+.actual-page {
+    background-color: #7033AD;
+    color: white;
+}
