@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import api from '../../services/api';
+import ModalError from '../Modals/ModalError/ModalError';
+import ModalSuccess from '../Modals/ModalSuccess/ModalSuccess';
 import './Form.css'
 
 class Form extends Component {
@@ -14,7 +16,11 @@ class Form extends Component {
           bio: '',
           selectedFile: null,
           url: '',
-          messageFile: 'Envie uma foto'
+          messageFile: 'Envie uma foto',
+          err: false,
+          messageErr: '',
+          success: false,
+          messageSuccess: 'Pix registrado com sucesso!'
         };
     }
 
@@ -33,7 +39,7 @@ class Form extends Component {
                 if ( 200 === response.status ) {
                     if( response.data.error ) {
                         if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
-                            alert( 'Tamanho máximo de 2MB excedido.');
+                            this.setState({ err: true, messageErr: 'Tamanho máximo de 2MB excedido'})
                         } else {
                             console.log( response.data );
                             alert( response.data.error);
@@ -51,7 +57,7 @@ class Form extends Component {
                 alert(err);
             });
         } else {
-            alert('Favor enviar uma foto de perfil.');
+            this.setState({ err: true, messageErr: 'Favor enviar uma foto de perfil'})
         }
     };
 
@@ -86,9 +92,9 @@ class Form extends Component {
                     } 
                     
                     if (empty) {
-                        alert('Ops.. parece que você deixou algo importante sem preencher!');
+                        this.setState({ err: true, messageErr: 'Ops.. parece que você deixou algo importante sem preencher!'})
                     } else if (length) {
-                        alert('Algumas das suas informações estão curtas demais...');
+                        this.setState({ err: true, messageErr: 'Algumas das suas informações estão curtas demais...'})
                     } else {
                         this.setState({
                             name: '',
@@ -98,7 +104,7 @@ class Form extends Component {
                             selectedFile: null,
                             url: ''
                         });
-                        alert('Pix registrado com sucesso!');
+                        this.setState({ success: true })
                     }
                 });
         } catch (err) {
@@ -109,7 +115,7 @@ class Form extends Component {
                 message = message.split(' ');
                 for(let i = 0; i < message.length; i++) {
                     if (message[i] === '429') {
-                        alert('Você já se cadastrou recentemente!');
+                        this.setState({ err: true, messageErr: 'Parece que você já se cadastrou recentemente...'})
                     } 
                 }
             } 
@@ -137,8 +143,12 @@ class Form extends Component {
     }
 
 
+
     render() {
         return(
+            <>
+            <ModalError onHide={() => this.setState({ err: false })} show={this.state.err} messageErr={this.state.messageErr} />
+            <ModalSuccess onHide={() => this.setState({ success: true })} show={this.state.success} messageSuccess={this.state.messageSuccess} />
             <form onSubmit={this.handleSubmit}>
                 <div>
                     <input
@@ -180,6 +190,7 @@ class Form extends Component {
                 />
                 <button type='submit'>Cadastrar</button>
             </form>
+            </>
         );
     }
 }
